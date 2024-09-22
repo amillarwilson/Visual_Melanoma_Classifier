@@ -8,15 +8,22 @@ But how do patients recognise melanomas? It can be difficult to recognise a mela
 To help alieviate this problem without the need for a national melanoma screening system, an image analysis tool could be developed to help raise red flags to warn of a melanoma. By way of being a proof of concept, this was a weekend project which uses machine learning to analyse photographs of concerning moles, classifying them into normal moles (naevi, sing. naevus) or melanomas.
 
 # Methods
+## Data origin
 Data were taken from the MED-NODE trial (4). These were chosen as the presented a roughly balanced (70 melanomas to 100 naevi) dataset of domestic camera images of melanomas and naevi. I considered it important to use domestic camera captured images as that is the end us case of these applications, people in a domestic setting taking their own pictures and analysing them.
 
+## Machine learning architecture
 The machine learning architecture used was a simple convultional neural network (CNN). This was chosen as CNNs have already proven themselves useful in medical image analysis, resulting in great progress in the field. Though complex CNN models have already been developed for medical image analysis(5), this project represents a basic proof of concept, so a more simplistic model, exploring the feasibility of the approach, was used.
 
-This weekend project was also an opportunity to develop my skillset. I already have experience in Python-based machine learning, so all data management, model construction, and training was done in KNIME, an increasingly popular GUI-driven data engineering and analytics platform. This is demonstrated in the model architecture in figure 1 below. The model is made of 2 sections, the convolution layers, which extract image features, and the neural network which generates the outcome prediction. Though better network architectures could be produced, this model was being trained on a laptop without a GPU, so processing time was a consideration, thus the 64 unit network layers and larger stride in the convolution layers. The final network layer consists of a single neuron with a sigmoid output, producing a float in the range of 0-1 which can be interpreted as a probability.
+This weekend project was also an opportunity to develop my skillset. I already have experience in Python-based machine learning, so all data management, model construction, and training was done in KNIME, an increasingly popular GUI-driven data engineering and analytics platform. This is demonstrated in the model architecture in figure 1 below. The model is made of 2 sections, the convolution layers, which extract image features, and the neural network which generates the outcome prediction. Though better network architectures could be produced, this model was being trained on a laptop without a GPU, so processing time was a consideration, thus the 64 unit network layers and larger stride in the convolution layers. The final network layer consists of a single neuron with a sigmoid output, producing a float in the range of 0-1 which can be interpreted as a probability, with p>=0.5 being interpreted as a melanoma.
 
 <img width="737" alt="image" src="https://github.com/user-attachments/assets/342d8c35-9ad6-4bad-bffe-c440f68fa047">
 
 *Figure 1. The construction of the CNN model in KNIME.*
+
+## Data import and preprocessing
+Data were loaded in using KNIME's image reader node, pixel values normalised to a range of 0-1 for each of the three RGB colour values, resized of 150 x 150 to integrate them into the model. The diagnoses were then coded (0 = naevus, 1 = melanoma), extraneous columns filtered out, and the data partitioned in a 70%-30% train-test split.
+
+<img width="898" alt="image" src="https://github.com/user-attachments/assets/cdc2b6ef-bdf3-46d2-8bf8-ae7121ec5895">
 
 
 # References
