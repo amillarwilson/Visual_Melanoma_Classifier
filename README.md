@@ -11,6 +11,8 @@ To help alieviate this problem without the need for a national melanoma screenin
 ## Data origin
 Data were taken from the MED-NODE trial (4). These were chosen as the presented a roughly balanced (70 melanomas to 100 naevi) dataset of domestic camera images of melanomas and naevi. I considered it important to use domestic camera captured images as that is the end us case of these applications, people in a domestic setting taking their own pictures and analysing them.
 
+The data are available at https://www.cs.rug.nl/~imaging/databases/melanoma_naevi/.
+
 ## Machine learning architecture
 The machine learning architecture used was a simple convultional neural network (CNN). This was chosen as CNNs have already proven themselves useful in medical image analysis, resulting in great progress in the field. Though complex CNN models have already been developed for medical image analysis(5), this project represents a basic proof of concept, so a more simplistic model, exploring the feasibility of the approach, was used.
 
@@ -34,10 +36,26 @@ The resulting model was then saved, and passed to a keras network executor. The 
 
 # Results
 ## Performance
-The model has surprisingly high performance given the small sample set and relatively basic architecture.
+The model diplayed high performance despite the small sample set and relatively basic architecture, with an accuracy of 0.808 in its first run. The confusion matrix, displaying similarly high precision can be seen in figure 3 below. A ROC curve was also plotted, with a less impressive 0.793 AUC, see figure 4.
+
+<img width="226" alt="image" src="https://github.com/user-attachments/assets/8fa25460-7803-43f7-94dd-8ebb69ac1afc">
+
+*Figure 3. Confusion matrix for the first run of the model.*
+
+![ROC Curve](https://github.com/user-attachments/assets/9f3f42fc-77f5-4156-a7c4-0fcce7959b53)
+
+*Figure 4. ROC curve with AUC calculation.*
 
 ## Performance robustness on re-training
-Surprisingly, given the small sample size, performance was robust to re-training at 100 epochs (accuracy on retraining: 0.808, 0.781, 0.793). This reflects the quality of the dataset and ability of CNNs to classify even subtle differences in images.
+Surprisingly, given the small sample size, performance was robust to re-training with randomised 70-30 train-test splits at 100 epochs (accuracy on retraining: 0.808, 0.781, 0.793). This reflects the quality of the dataset and ability of CNNs to classify even subtle differences in images.
+
+# Conclusion
+The model training and testing workflow performed well, producing high quality models on a very small sample set. However, the samples used were exclusive from paler skin tones, thus performance issues are expected in darker skin tones.
+
+To further improve model performance across all patients, I plan on collecting more publicly available naevus and melanoma pictures, including an equal balance of skin tones to ensure the model works well for all.
+
+# Materials available in this repository
+In this repo I have made available my KNIME training and testing architecture, as well as the final model trained during testing, with an accuracy of 0.793.
 
 # References
 1) https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/melanoma-skin-cancer
