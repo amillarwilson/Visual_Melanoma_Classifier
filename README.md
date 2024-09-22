@@ -25,6 +25,19 @@ Data were loaded in using KNIME's image reader node, pixel values normalised to 
 
 <img width="898" alt="image" src="https://github.com/user-attachments/assets/cdc2b6ef-bdf3-46d2-8bf8-ae7121ec5895">
 
+*Figure 2. Image preprocessing.*
+
+## Model training
+The constructed model and preprocessed data were then input into a keras network learner node, set to train for 100 epochs. Though 100 epochs seems like a high number for a classificaiton exercise, it was found through gradual trial and error, with all values up to 30 leading to a heavily biased model which predicted all 1 or all 0, 60 and 120 leading to a test accuracy indicatinve of underfitting and overfitting respectively, and 100 seeing the highest performance in testing. The high number of epochs required and highly biased model seen in more typical 10-20 training epoch ranges may be a consequence of the very small dataset. The consequence of using such a small dataset (100 melanoma, 70 naevus images) may have been that the model did not have sufficient data in 10 epochs to make meaningful network weight changes, requiring more epochs to better learn from the small dataset.
+
+The resulting model was then saved, and passed to a keras network executor. The results of the executor were then passed to a scoring module and a ROC curve plotter to give final performance metrics. This workflow was run multiple times to ensure the accuracy produced at each training epoch value was robust.
+
+# Results
+## Performance
+The model has surprisingly high performance given the small sample set and relatively basic architecture.
+
+## Performance robustness on re-training
+Surprisingly, given the small sample size, performance was robust to re-training at 100 epochs (accuracy on retraining: 0.808, 0.781, 0.793). This reflects the quality of the dataset and ability of CNNs to classify even subtle differences in images.
 
 # References
 1) https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/melanoma-skin-cancer
