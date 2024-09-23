@@ -5,9 +5,9 @@
     <entry key="version" type="xstring" value="5.1.0"/>
     <entry key="name" type="xstring" isnull="true" value=""/>
     <config key="authorInformation">
-        <entry key="authored-by" type="xstring" value="m10368am"/>
+        <entry key="authored-by" type="xstring" value="amillarwilson"/>
         <entry key="authored-when" type="xstring" value="2024-09-23 10:58:34 +0100"/>
-        <entry key="lastEdited-by" type="xstring" value="m10368am"/>
+        <entry key="lastEdited-by" type="xstring" value="amillarwilson"/>
         <entry key="lastEdited-when" type="xstring" value="2024-09-23 11:08:03 +0100"/>
     </config>
     <entry key="customDescription" type="xstring" isnull="true" value=""/>
