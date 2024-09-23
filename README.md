@@ -23,7 +23,7 @@ This weekend project was also an opportunity to develop my skillset. I already h
 *Figure 1. The construction of the CNN model in KNIME.*
 
 ## Data import and preprocessing
-Data were loaded in using KNIME's image reader node, pixel values normalised to a range of 0-1 for each of the three RGB colour values, resized of 150 x 150 to integrate them into the model. The diagnoses were then coded (0 = naevus, 1 = melanoma), extraneous columns filtered out, and the data partitioned in a 70%-30% train-test split.
+Data were loaded in using KNIME's image reader node, passing in a CSV containing the image file locations, pixel values normalised to a range of 0-1 for each of the three RGB colour values, resized of 150 x 150 to integrate them into the model. The diagnoses were then coded (0 = naevus, 1 = melanoma), extraneous columns filtered out, and the data partitioned in a 70%-30% train-test split.
 
 <img width="898" alt="image" src="https://github.com/user-attachments/assets/cdc2b6ef-bdf3-46d2-8bf8-ae7121ec5895">
 
