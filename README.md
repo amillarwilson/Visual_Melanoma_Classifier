@@ -5,7 +5,9 @@ Melanomas are a common and potentially deadly form of cancer for which there are
 
 But how do patients recognise melanomas? It can be difficult to recognise a melanoma, with the American Academy of Dermatology recommending the "ABCDE" system, with each letter describing an aspect of the appearance or behaviour of a melanoma that differentiates it from a normal mole. This system assumes two key things: 1) Patients will faithfully carry out the ABCDE system on each more, and 2) every melanoma fits the ABCDE system. Though it is doubtful that every person would put the time in to run an ABCDE check on each mole, it is absolute fact that not all melanomas fall under the ABCDE characteristics (3).
 
-To help alleviate this problem without the need for a national melanoma screening system, an image analysis tool could be developed to help raise red flags to warn of a melanoma. By way of being a proof of concept, this was a weekend project which uses machine learning to analyse photographs of concerning moles, classifying them into normal moles (naevi, sing. naevus) or melanomas.
+To help alleviate this problem without the need for a national melanoma screening system, an image analysis tool could be developed to help raise red flags to warn of a melanoma. By way of being a **proof of concept**, this was a weekend project which uses machine learning to analyse photographs of concerning moles, classifying them into normal moles (naevi, sing. naevus) or melanomas.
+
+**This software is for educational and academic purposes only and should not be used in place of a doctor's opinion. If you have a new or suspect mole, please seek appropriate medical care.**
 
 # Methods
 ## Data origin
@@ -50,12 +52,12 @@ The model displayed high performance despite the small sample set and relatively
 Surprisingly, given the small sample size, performance was robust to re-training with randomised 70-30 train-test splits at 100 epochs (accuracy on retraining: 0.808, 0.781, 0.793). This reflects the quality of the dataset and ability of CNNs to classify even subtle differences in images.
 
 # Conclusion
-The model training and testing workflow performed well, producing high quality models on a very small sample set. However, the samples used were exclusive from paler skin tones, thus performance issues are expected in darker skin tones.
+The model training and testing workflow performed well, producing high quality models on a very small sample set. However, the samples used were exclusive from paler skin tones, thus performance issues are expected in darker skin tones. As such, this was a successfuly proof of concept, though the model is far from being useful in a clinical context and could not be used at present even for individual risk assessment.
 
 To further improve model performance across all patients, I plan on collecting more publicly available naevus and melanoma pictures, including an equal balance of skin tones to ensure the model works well for all.
 
 # Materials available in this repository
-In this repo I have made available my KNIME training and testing architecture, as well as the final model trained during testing, with an accuracy of 0.793.
+In this repo I have made available my KNIME training and testing architecture, to import into KNIME, download the whole directory and paste it into your KNIME workspace directory. Upload of a trained model was attempted, but the file was too large to be hosted on GitHub, and as such is available on request. Drop me a message on here if you have any questions, requests, or ideas on how I can expand the project!
 
 # References
 1) https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/melanoma-skin-cancer
@@ -63,3 +65,8 @@ In this repo I have made available my KNIME training and testing architecture, a
 3) https://my.clevelandclinic.org/health/diseases/14391-melanoma
 4) https://doi.org/10.1016/j.eswa.2015.04.034
 5) https://doi.org/10.1016/j.neucom.2020.04.157
+
+# Licence
+The software is for educational and academic research purposes only and should not be used in place of a doctor's opinion.
+
+Work covered under MIT License.
